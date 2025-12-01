@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Create Warehouse - Warehouse Manager{% endblock %}
+
+{% block content %}
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #495057;
+        font-weight: 600;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .form-actions button,
+    .form-actions a {
+        flex: 1;
+    }
+    
+    h2 {
+        color: #667eea;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .form-help {
+        font-size: 0.9em;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="form-container">
+    <h2>➕ Create New Warehouse</h2>
+    
+    <form method="POST" action="{{ url_for('create_warehouse') }}">
+        <div class="form-group">
+            <label for="name">Warehouse Name *</label>
+            <input type="text" id="name" name="name" required placeholder="e.g., Main Storage, Building A">
+            <div class="form-help">Give your warehouse a descriptive name</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="tilavuus">Capacity (units) *</label>
+            <input type="number" id="tilavuus" name="tilavuus" step="0.01" min="0.01" required placeholder="100.00">
+            <div class="form-help">Maximum storage capacity in units</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="alku_saldo">Initial Stock (units)</label>
+            <input type="number" id="alku_saldo" name="alku_saldo" step="0.01" min="0" value="0" placeholder="0.00">
+            <div class="form-help">Starting inventory amount (optional, defaults to 0)</div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Warehouse</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
