@@ -35,6 +35,21 @@ poetry run python app.py
 
 Then open your browser and navigate to `http://127.0.0.1:5000`
 
+#### Environment Variables
+
+The following environment variables can be configured:
+
+- `SECRET_KEY`: Secret key for Flask sessions (default: 'dev-secret-key-change-in-production')
+- `FLASK_DEBUG`: Enable debug mode ('true' to enable, default: 'false')
+
+**Production Example:**
+```bash
+export SECRET_KEY="your-secret-key-here"
+export FLASK_DEBUG="false"
+cd src
+poetry run python app.py
+```
+
 ### Command Line Demo
 
 Run the command-line demo:
