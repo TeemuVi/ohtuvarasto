@@ -1,2 +1,6 @@
 __pycache__/
 .pytest_cache/
+*.pyc
+.coverage
+instance/
+.flask_session
